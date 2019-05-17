@@ -1,0 +1,22 @@
+open_parths = ["[","{","("] 
+close_parths = ["]","}",")"] 
+  
+# Function to check parentheses 
+def check(myStr): 
+    store = [] 
+    for i in myStr: 
+        if i in open_parths: 
+            store.append(i) 
+        elif i in close_parths: 
+            pos = close_parths.index(i) 
+            if ((len(store) > 0) and
+                (open_parths[pos] == store[len(store)-1])): 
+                store.pop() 
+            else: 
+                return "False"
+    if len(store) == 0: 
+        return "True"
+  
+# Input code 
+string = input("Enter the parenthesis string: ")
+print(string,"-", check(string)) 
